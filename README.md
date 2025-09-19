@@ -110,5 +110,4 @@ You are free to use, modify, and share with attribution.
 ## 👨‍💻 Author
 **Fawaz Oyebode**  
 University of Ibadan  
-Department of Science & Technology Education  
-Matric Number: **230146**
+
