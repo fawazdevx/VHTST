@@ -1,6 +1,6 @@
-# 🌡️ Virtual Heat Transfer Simulation Tool (VHTS)
+# 🌡️ Virtual Heat Transfer Simulation Tool (VHTST)
 
-The **Virtual Heat Transfer Simulation Tool (VHTS)** is an interactive learning software built with **Python (Tkinter)** to help students understand the three modes of heat transfer: **Conduction, Convection, and Radiation**.  
+The **Virtual Heat Transfer Simulation Tool (VHTST)** is an interactive learning software built with **Python (Tkinter)** to help students understand the three modes of heat transfer: **Conduction, Convection, and Radiation**.  
 
 It is designed for **SS1 Physics students** to make abstract thermodynamics concepts more engaging through **visual simulations, graphics, and interactive mode switching**.
 
