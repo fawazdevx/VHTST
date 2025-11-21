@@ -330,31 +330,34 @@ class HeatSimulationTab:
         self.temp_label.config(text=f"Temperature: {self.temperature}°C")
 
     def animate(self):
-        for idx,particle in enumerate(self.particles):
-            base_x,base_y=self.base_positions[idx]
-            if self.state=="Solid":
-                amp=int(self.temperature/5)
-                dx=random.randint(-amp,amp)
-                dy=random.randint(-amp,amp)
-            elif self.state=="Liquid":
-                amp=int(self.temperature/3)
-                dx=random.randint(-amp,amp)
-                dy=random.randint(-amp,amp)
-            elif self.state=="Gas":
-                amp=int(self.temperature/2+5)
-                dx=random.randint(-amp,amp)
-                dy=random.randint(-amp,amp)
-            red=min(255,50+self.temperature*2)
-            blue=max(0,255-self.temperature*2)
-            color=f"#{red:02x}33{blue:02x}"
-            self.canvas.move(particle,dx,dy)
-            coords=self.canvas.coords(particle)
-            if coords:
-                x1,y1,x2,y2=coords
-                if x1<0 or x2>700 or y1<0 or y2>400:
-                    self.canvas.move(particle,-dx,-dy)
-            self.canvas.itemconfig(particle,fill=color)
-        self.frame.after(100,self.animate)
+        for idx, particle in enumerate(self.particles):
+            base_x, base_y = self.base_positions[idx]
+            if self.state == "Solid":
+                # Amplitude proportional to temperature
+                amp = int(self.temperature / 5)
+                # Random displacement around base position
+                dx = random.randint(-amp, amp)
+                dy = random.randint(-amp, amp)
+                # Move particle to oscillate around its base position
+                self.canvas.coords(particle, base_x - 10 + dx, base_y - 10 + dy, base_x + 10 + dx, base_y + 10 + dy)
+            elif self.state == "Liquid":
+                amp = int(self.temperature / 3)
+                dx = random.randint(-amp, amp)
+                dy = random.randint(-amp, amp)
+                self.canvas.move(particle, dx, dy)
+            elif self.state == "Gas":
+                amp = int(self.temperature / 2 + 5)
+                dx = random.randint(-amp, amp)
+                dy = random.randint(-amp, amp)
+                self.canvas.move(particle, dx, dy)
+
+            # Color changes with temperature
+            red = min(255, 50 + self.temperature * 2)
+            blue = max(0, 255 - self.temperature * 2)
+            color = f"#{red:02x}33{blue:02x}"
+            self.canvas.itemconfig(particle, fill=color)
+
+        self.frame.after(100, self.animate)
 
 
 # ================================
